@@ -1,224 +1,215 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interpolación Numérica - Aplicaciones Prácticas</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <link rel="stylesheet" href="estilos.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluciones Numéricas de ED</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="#">
-        <i class="fas fa-chart-line me-2"></i>
-        <span>Interpolación</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item mx-1">
-            <a class="nav-link" href="paginas/aplicacion1.html">
-              <i class="fas fa-seedling me-1"></i> Crecimiento de Plantas
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-calculator me-2"></i>Métodos Numéricos
             </a>
-          </li>
-          <li class="nav-item mx-1">
-            <a class="nav-link" href="paginas/aplicacion2.html">
-              <i class="fas fa-thermometer-half me-1"></i> Temperatura
-            </a>
-          </li>
-          <li class="nav-item mx-1">
-            <a class="nav-link" href="paginas/aplicacion3.html">
-              <i class="fas fa-wifi me-1"></i> Sensores IoT
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section mejorada -->
-  <header class="bg-light py-5 mb-5">
-    <div class="container text-center py-4">
-      <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">Interpolación Numérica</h1>
-      <p class="lead fs-4 mb-4 animate__animated animate__fadeIn animate__delay-1s">
-        Explora cómo los métodos de interpolación permiten estimar datos intermedios en diversas aplicaciones reales.
-      </p>
-      <div class="animate__animated animate__fadeIn animate__delay-2s">
-        <a href="#aplicaciones" class="btn btn-primary btn-lg px-4 me-2">
-          <i class="fas fa-rocket me-1"></i> Ver Aplicaciones
-        </a>
-        <a href="#que-es" class="btn btn-outline-primary btn-lg px-4">
-          <i class="fas fa-info-circle me-1"></i> Saber más
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Sección de contenido principal -->
-  <main class="container">
-    <section id="que-es" class="py-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <h2 class="text-center mb-5">¿Qué es la Interpolación?</h2>
-          <div class="row align-items-center">
-            <div class="col-md-6 mb-4 mb-md-0">
-              <img src="/pngwing.com.png" 
-                   alt="Gráfico de interpolación" 
-                   class="img-fluid rounded shadow">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#problema37">Problema 37</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#problema39">Problema 39</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#problema40">Problema 40</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#comparacion">Comparación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#conclusion">Conclusión</a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-6">
-              <p class="lead">
-                La interpolación es una técnica matemática fundamental utilizada para estimar valores desconocidos entre un conjunto de puntos conocidos.
-              </p>
-              <p>
-                Se aplica en diversos campos como ingeniería, agricultura, medicina, meteorología y análisis de datos. Este proyecto muestra tres aplicaciones prácticas usando métodos avanzados como <strong>Newton</strong>, <strong>Lagrange</strong> y <strong>Splines</strong>.
-              </p>
-              <div class="d-flex mt-4">
-                <div class="me-4 text-center">
-                  <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block">
-                    <i class="fas fa-calculator text-primary fs-3"></i>
-                  </div>
-                  <p class="mt-2 fw-bold">Precisión</p>
+        </div>
+    </nav>
+
+    <header class="hero bg-light py-5 mt-5">
+        <div class="container text-center">
+            <h1 class="display-4">Soluciones de Ecuaciones Diferenciales</h1>
+            <p class="lead">Implementación de los métodos de Heun y RK4</p>
+        </div>
+    </header>
+
+    <div class="container my-5">
+        <section id="problema37" class="card my-4">
+            <div class="card-header bg-dark text-white">
+                <h2>Problema 37: Crecimiento Poblacional</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Grafica métodos de Heun y RK4</h4>
+                        <img src="graficas/problema37.png" alt="Crecimiento Poblacional" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Ecuación:</h4>
+                        <p class="equation">\(\frac{dN}{dt} = kN(N_M - N)\)</p>
+                        <div id="tabla-37" class="my-3"></div>
+                    </div>
+                              
                 </div>
-                <div class="me-4 text-center">
-                  <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block">
-                    <i class="fas fa-chart-line text-primary fs-3"></i>
-                  </div>
-                  <p class="mt-2 fw-bold">Visualización</p>
+                
+            </div>
+        </section>
+
+        <section id="problema39" class="card my-4">
+            <div class="card-header bg-dark text-white">
+                <h2>Problema 39: Crecimiento de Tumor</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Grafica métodos de Heun y RK4</h4>
+                        <img src="graficas/problema39.png" alt="Crecimiento de Tumor" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Ecuación:</h4>
+                        <p class="equation">\(\frac{dA}{dt} = \alpha A \left[1 - \left(\frac{A}{k}\right)^v\right]\)</p>
+                        <div id="tabla-39" class="my-3"></div>
+                    </div>
                 </div>
-                <div class="text-center">
-                  <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block">
-                    <i class="fas fa-lightbulb text-primary fs-3"></i>
-                  </div>
-                  <p class="mt-2 fw-bold">Aplicaciones</p>
+            </div>
+        </section>
+
+        <section id="problema40" class="card my-4">
+            <div class="card-header bg-dark text-white">
+                <h2>Problema 40: Caída de Objeto</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Grafica métodos de Heun y RK4</h4>
+                        <img src="graficas/problema40.png" alt="Caída de Objeto" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Ecuación:</h4>
+                        <p class="equation">\(m \frac{dv}{dt} = -mg + kv^2\)</p>   
+                        <div id="tabla-40" class="my-3"></div>                     
+                    </div>
+                    
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Sección de aplicaciones -->
-    <section id="aplicaciones" class="py-5">
-      <h2 class="text-center mb-5">Aplicaciones Prácticas</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body text-center">
-              <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
-                <i class="fas fa-seedling text-primary fs-3"></i>
-              </div>
-              <h5 class="card-title">Crecimiento de Plantas</h5>
-              <p class="card-text">
-                Estimar la altura de una planta en días intermedios usando registros previos mediante interpolación polinómica.
-              </p>
-              <a href="paginas/aplicacion1.html" class="btn btn-primary mt-auto">
-                Explorar <i class="fas fa-arrow-right ms-1"></i>
-              </a>
+        <section id="comparacion" class="card my-4">
+            <h2 class="mb-4">Comparación de Métodos</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Aspecto</th>
+                            <th>Método de Heun</th>
+                            <th>Método RK4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Orden</td>
+                            <td>2do orden</td>
+                            <td>4to orden</td>
+                        </tr>
+                        <tr>
+                            <td>Precisión</td>
+                            <td>Moderada</td>
+                            <td>Alta</td>
+                        </tr>
+                        <tr>
+                            <td>Estabilidad</td>
+                            <td>Buena</td>
+                            <td>Excelente</td>
+                        </tr>
+                        <tr>
+                            <td>Costo Computacional</td>
+                            <td>2 evaluaciones/paso</td>
+                            <td>4 evaluaciones/paso</td>
+                        </tr>
+                        <tr>
+                            <td>Complejidad</td>
+                            <td>Simple</td>
+                            <td>Moderada</td>
+                        </tr>
+                        <tr>
+                            <td>Rendimiento en Problema 37</td>
+                            <td>Bueno</td>
+                            <td>Excelente</td>
+                        </tr>
+                        <tr>
+                            <td>Rendimiento en Problema 39</td>
+                            <td>Bueno</td>
+                            <td>Excelente</td>
+                        </tr>
+                        <tr>
+                            <td>Rendimiento en Problema 40</td>
+                            <td>Adecuado</td>
+                            <td>Muy Bueno</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body text-center">
-              <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
-                <i class="fas fa-thermometer-half text-primary fs-3"></i>
-              </div>
-              <h5 class="card-title">Temperatura Diaria</h5>
-              <p class="card-text">
-                Predecir temperaturas horarias a partir de lecturas en horarios clave usando splines cúbicos.
-              </p>
-              <a href="paginas/aplicacion2.html" class="btn btn-primary mt-auto">
-                Explorar <i class="fas fa-arrow-right ms-1"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body text-center">
-              <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
-                <i class="fas fa-wifi text-primary fs-3"></i>
-              </div>
-              <h5 class="card-title">Relleno de Datos en IoT</h5>
-              <p class="card-text">
-                Interpolar datos faltantes de sensores en una red inteligente usando métodos de interpolación avanzados.
-              </p>
-              <a href="paginas/aplicacion3.html" class="btn btn-primary mt-auto">
-                Explorar <i class="fas fa-arrow-right ms-1"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Sección de métodos -->
-    <section class="py-5 bg-light rounded-3 my-5">
-      <div class="container">
-        <h2 class="text-center mb-5">Métodos de Interpolación</h2>
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
-              <h4 class="text-primary"><i class="fas fa-square-root-alt me-2"></i> Newton</h4>
-              <p>Método de diferencias divididas que construye un polinomio interpolador de forma recursiva.</p>
+        <section id="conclusion" class="section">
+            <h2 class="mb-4">Conclusiones</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sobre los Problemas</h5>
+                    <p class="card-text">
+                        Los tres modelos representan sistemas dinámicos comunes en la naturaleza y la ingeniería. 
+                        El crecimiento poblacional y del tumor muestran comportamiento logístico, mientras que 
+                        la caída del objeto con resistencia del aire alcanza una velocidad terminal.
+                    </p>
+                    
+                    <h5 class="card-title mt-4">Sobre los Métodos Numéricos</h5>
+                    <p class="card-text">
+                        <strong>Método de Heun:</strong> Es una mejora simple sobre Euler que proporciona buena 
+                        precisión con bajo costo computacional. Funciona bien para problemas suaves como 
+                        los modelos de crecimiento.
+                    </p>
+                    <p class="card-text">
+                        <strong>Método RK4:</strong> Ofrece mayor precisión a costa de más cálculos por paso. 
+                        Es especialmente útil para problemas no lineales como la caída con resistencia del aire.
+                    </p>
+                    <p class="card-text">
+                        Para la mayoría de aplicaciones prácticas, RK4 es preferible cuando se necesita alta 
+                        precisión, mientras que Heun puede ser adecuado para aproximaciones rápidas o cuando 
+                        el costo computacional es crítico.
+                    </p>
+                </div>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
-              <h4 class="text-primary"><i class="fas fa-function me-2"></i> Lagrange</h4>
-              <p>Construye un polinomio único que pasa exactamente por todos los puntos conocidos.</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
-              <h4 class="text-primary"><i class="fas fa-project-diagram me-2"></i> Splines</h4>
-              <p>Interpolación por partes que garantiza suavidad en los puntos de unión (knots).</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+        </section>
+    
 
-  <!-- Footer mejorado -->
-  <footer class="bg-dark text-white py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 text-center text-md-start">
-          <h5 class="mb-3"><i class="fas fa-chart-line me-2"></i> Interpolación Numérica</h5>
-          <p class="small mb-0">Proyecto demostrativo de aplicaciones prácticas de métodos de interpolación.</p>
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-2">Solución Numérica de Ecuaciones Diferenciales</p>
+            <div class="social-links">
+                <a href="#" class="text-white mx-2"><i class="fab fa-github fa-lg"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fas fa-envelope fa-lg"></i></a>
+            </div>
         </div>
-        <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
-          <div class="social-links mb-3">
-            <a href="#" class="text-white me-3"><i class="fab fa-github fa-lg"></i></a>
-            <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
-            <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
-          </div>
-          <small>&copy; 2025 Gabriel - Proyecto de Interpolación Numérica</small>
-        </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    // Animación suave para los enlaces
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="script.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>
